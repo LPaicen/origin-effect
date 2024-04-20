@@ -1,1 +1,6 @@
+# Information
 site_name: Origin Effect
+
+# Configuration
+theme:
+  name: material
