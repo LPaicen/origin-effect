@@ -21,12 +21,8 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - name: Download Artifact Docs
         id: download
-        uses: dawidd6/action-download-artifact@v4
+        uses: actions/download-artifact@v4
         with:
-          if_no_artifact_found: ignore
-          github_token: ${{ secrets.DOWNLOAD_ARTIFACTS }}
-          workflow: build-docs.yml
-          run_id: ${{ github.event.workflow_run.id }}
           path: ./site/
       - name: Deploy
         run: |
