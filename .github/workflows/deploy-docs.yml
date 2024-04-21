@@ -23,7 +23,9 @@ jobs:
         id: download
         uses: actions/download-artifact@v4
         with:
-          path: ./site/
+          path: site
+      - name: Display structure of downloaded files
+        run: ls
       - name: Deploy
         run: |
           pip install typer
