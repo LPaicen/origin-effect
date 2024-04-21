@@ -31,7 +31,7 @@ jobs:
         lang: ${{ fromJson(needs.langs.outputs.langs) }}
     steps:
       - uses: actions/checkout@v4
-      - name: Build Docs
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.x
