@@ -1,1 +1,1 @@
-INHERIT: ./zh/mkdocs.yml
+INHERIT: ./docs/zh/mkdocs.yml
