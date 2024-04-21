@@ -30,6 +30,6 @@ jobs:
           name: docs-site
           path: ./site/
       - name: Deploy
-      - run: |
+        run: |
           python ./scripts/build-docs.py build
           mkdocs gh-deploy --force
