@@ -1,1 +1,9 @@
-INHERIT: ./docs/zh/mkdocs.yml
+# Information
+site_name: 原点效应
+site_url: https://origineffect.net/
+site_description: 原点效应官方网站
+
+# Configuration
+theme:
+  name: material
+  language: zh
