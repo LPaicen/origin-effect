@@ -13,14 +13,14 @@ permissions:
 jobs:
   deploy:
     - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
     - name: Configure Git Credentials
       run: |
         git config user.name github-actions[bot]
         git config user.email 41898282+github-actions[bot]@users.noreply.github.com
     - name: Download Artifact Docs
       id: download
-      uses: dawidd6/action-download-artifact@v3.1.4
+    - uses: dawidd6/action-download-artifact@v3.1.4
       with:
         if_no_artifact_found: ignore
         github_token: ${{ secrets.DOWNLOAD_ARTIFACTS }}
@@ -29,6 +29,6 @@ jobs:
         name: docs-site
         path: ./site/
     - name: Deploy
-      run: |
+    - run: |
         python ./scripts/build-docs.py build
         mkdocs gh-deploy --force
