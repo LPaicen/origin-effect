@@ -7,7 +7,7 @@ app = typer.Typer()
 
 docs_path = Path("docs")
 site_path = Path("site")
-artifact = Path("Artifact")
+artifact = Path("artifacts")
 
 @app.command()
 def build() -> None:
