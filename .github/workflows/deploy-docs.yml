@@ -32,5 +32,5 @@ jobs:
       - name: Deploy
         run: |
           pip install typer
-          python ./scripts/build-docs.py build
+          python ./build/build-docs.py build
           mkdocs gh-deploy --force
