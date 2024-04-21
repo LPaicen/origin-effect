@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   deploy:
-    - name: Checkout
     - uses: actions/checkout@v4
     - name: Configure Git Credentials
       run: |
