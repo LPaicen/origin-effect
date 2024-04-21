@@ -31,5 +31,6 @@ jobs:
           path: ./site/
       - name: Deploy
         run: |
+          pip install typer
           python ./scripts/build-docs.py build
           mkdocs gh-deploy --force

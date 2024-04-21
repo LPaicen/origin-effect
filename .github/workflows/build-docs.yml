@@ -19,6 +19,7 @@ jobs:
       - name: Export Language Codes
         id: export-langs
         run: |
+          pip install typer
           echo "langs=$(python ./build/i18n.py langs-json)" >> $GITHUB_OUTPUT
 
   build:
@@ -38,7 +39,9 @@ jobs:
           key: mkdocs-material-${{ matrix.lang }}-${{ github.ref }}
           path: docs/${{ matrix.lang }}/.cache
       - name: Build Docs
-        run: python ./scripts/i18n.py build-lang ${{ matrix.lang }}
+        run: |
+          pip install typer
+          python ./scripts/i18n.py build-lang ${{ matrix.lang }}
       - uses: actions/upload-artifact@v3
         with:
           name: docs-site
