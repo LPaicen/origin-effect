@@ -2,8 +2,11 @@ import os
 import json
 import shutil
 import subprocess
+import typer
 from pathlib import Path
 from typing import List
+
+app = typer.Typer()
 
 default_lang = "zh"
 docs_path = Path("docs")
@@ -12,7 +15,7 @@ site_path = Path("site").absolute()
 def get_available_lang_paths() -> List[Path]:
     return sorted(docs_path.iterdir())
 
-
+@app.command()
 def langs_json():
     langs = []
     for lang_path in get_available_lang_paths():
@@ -20,6 +23,7 @@ def langs_json():
             langs.append(lang_path.name)
     print(json.dumps(langs))
 
+@app.command()
 def build_lang(lang_code: str) -> None:
     lang_path = Path("docs") / lang_code
     if lang_code == default_lang:
@@ -31,3 +35,6 @@ def build_lang(lang_code: str) -> None:
     os.chdir(lang_path)
     subprocess.run(["mkdocs", "build", "--site-dir", dist_path], check=True)
     os.chdir(current_dir)
+
+if __name__ == "__main__":
+    app()
