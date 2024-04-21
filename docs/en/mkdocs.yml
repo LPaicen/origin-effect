@@ -1,1 +1,51 @@
-INHERIT: ../zh/mkdocs.yml
+# Information
+site_name: Origin Effect
+site_url: https://origineffect.net/
+site_description: 原点效应官方网站
+
+# Configuration
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: a
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: b
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/toggle-switch-off
+        name: c
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+
+# Additional
+extra:
+  alternate:
+    - name: 简体中文
+      lang: zh
+    - name: English
+      link: /en/
+      lang: en
+
+# Navigation
+nav:
+  - 首页: index.md
+  - Cube Core: cubecore/index.md
