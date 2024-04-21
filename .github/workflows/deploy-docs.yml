@@ -12,22 +12,24 @@ permissions:
 
 jobs:
   deploy:
-    - uses: actions/checkout@v4
-    - name: Configure Git Credentials
-      run: |
-        git config user.name github-actions[bot]
-        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-    - name: Download Artifact Docs
-      id: download
-    - uses: dawidd6/action-download-artifact@v3.1.4
-      with:
-        if_no_artifact_found: ignore
-        github_token: ${{ secrets.DOWNLOAD_ARTIFACTS }}
-        workflow: build-docs.yml
-        run_id: ${{ github.event.workflow_run.id }}
-        name: docs-site
-        path: ./site/
-    - name: Deploy
-    - run: |
-        python ./scripts/build-docs.py build
-        mkdocs gh-deploy --force
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Download Artifact Docs
+        id: download
+      - uses: dawidd6/action-download-artifact@v3.1.4
+        with:
+          if_no_artifact_found: ignore
+          github_token: ${{ secrets.DOWNLOAD_ARTIFACTS }}
+          workflow: build-docs.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: docs-site
+          path: ./site/
+      - name: Deploy
+      - run: |
+          python ./scripts/build-docs.py build
+          mkdocs gh-deploy --force
