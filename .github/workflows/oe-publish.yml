@@ -74,4 +74,4 @@ jobs:
           pip install typer
           pip install mkdocs-material
           python ./build/build-docs.py
-          mkdocs gh-deploy --force
+          mkdocs gh-deploy
