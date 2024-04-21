@@ -1,6 +1,6 @@
 # Information
 site_name: Origin Effect
-site_url: https://lpaicen.github.io/origin-effect/
+site_url: https://origineffect.net/
 site_description: 原点效应官方网站
 
 # Configuration
@@ -26,13 +26,26 @@ theme:
       toggle:
         icon: material/toggle-switch-off
         name: 切换至系统偏好
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
 
 # Additional
 extra:
   alternate:
     - name: 简体中文
-      link: /
       lang: zh
     - name: English
-      link: /en/ 
+      link: /en/
       lang: en
+
+# Navigation
+nav:
+  - 首页: index.md
+  - Cube Core: cubecore/index.md
