@@ -30,7 +30,7 @@ jobs:
         lang: ${{ fromJson(needs.langs.outputs.langs) }}
     steps:
       - name: Build Docs
-      - uses: actions/setup-python@v5
+        uses: actions/setup-python@v5
         with:
           python-version: 3.x
       - uses: actions/cache@v4
