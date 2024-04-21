@@ -62,7 +62,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - name: Download Artifact Docs
         id: download
-        uses: actions@download-artifact@v4
+        uses: actions/download-artifact@v4
         with:
           path: ./site/
           merge-multiple: true
