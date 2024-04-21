@@ -32,5 +32,6 @@ jobs:
       - name: Deploy
         run: |
           pip install typer
+          pip install mkdocs-material
           python ./build/build-docs.py build
           mkdocs gh-deploy --force

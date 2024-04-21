@@ -42,6 +42,7 @@ jobs:
       - name: Build Docs
         run: |
           pip install typer
+          pip install mkdocs-material
           python ./build/i18n.py build-lang ${{ matrix.lang }}
       - uses: actions/upload-artifact@v3
         with:

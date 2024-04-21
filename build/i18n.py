@@ -43,7 +43,7 @@ def build_lang(lang_code: str) -> None:
     subprocess.run(["mkdocs", "build", "--site-dir", build_site_dist_path], check=True)
     shutil.copytree(build_site_dist_path, dist_path, dirs_exist_ok=True)
     os.chdir(current_dir)
-    typer.secho(f"Successfully built docs for: {lang}", color=typer.colors.GREEN)
+    typer.secho(f"Successfully built docs for: {lang_code}", color=typer.colors.GREEN)
 
 if __name__ == "__main__":
     app()
