@@ -1,61 +1,12 @@
-name: Deploy Origin Effect Docs
-
+name: Publish Cube Core
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
-
 jobs:
-  langs:
-    runs-on: ubuntu-latest
-    outputs:
-      langs: ${{ steps.export-langs.outputs.langs }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-      - name: Export Language Codes
-        id: export-langs
-        run: |
-          pip install typer
-          echo "langs=$(python ./build/i18n.py langs-json)" >> $GITHUB_OUTPUT
-
-  build:
-    needs:
-      - langs
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lang: ${{ fromJson(needs.langs.outputs.langs) }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ matrix.lang }}-${{ github.ref }}
-          path: docs/${{ matrix.lang }}/.cache
-      - name: Build Docs
-        run: |
-          pip install typer
-          pip install mkdocs-material
-          python ./build/i18n.py build-lang ${{ matrix.lang }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: docs-site-${{ matrix.lang }}
-          path: ./site/**
-
   deploy:
-    needs:
-      - langs
-      - build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -63,15 +14,15 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Download Artifact Docs
-        id: download
-        uses: actions/download-artifact@v4
+      - uses: actions/setup-python@v5
         with:
-          path: ./site/
-          merge-multiple: true
-      - name: Deploy
-        run: |
-          pip install typer
-          pip install mkdocs-material
-          python ./build/build-docs.py
-          mkdocs gh-deploy --force
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material 
+      - run: mkdocs gh-deploy --force
