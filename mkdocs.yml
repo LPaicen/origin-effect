@@ -8,24 +8,20 @@ theme:
   name: material
   language: en
   palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/link
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
+    - media: '(prefers-color-scheme: light)'
       scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/toggle-switch
+        icon: material/lightbulb-on-outline
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
+    - media: '(prefers-color-scheme: dark)'
       scheme: slate
-      primary: teal
-      accent: teal
+      primary: black
+      accent: indigo
       toggle:
-        icon: material/toggle-switch-off
-        name: Switch to system preference
+        icon: material/lightbulb-outline
+        name: Switch to light mode
   features:
     - navigation.instant
     - navigation.instant.prefetch
@@ -39,12 +35,12 @@ theme:
 # Additional
 extra:
   alternate:
-    - name: 简体中文
-      link: https://zh.origineffect.net
-      lang: zh
     - name: English
       link: https://origineffect.net
       lang: en
+    - name: 简体中文
+      link: https://zh.origineffect.net
+      lang: zh
 
 # Navigation
 nav:
