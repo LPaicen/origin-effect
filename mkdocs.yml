@@ -23,7 +23,6 @@ theme:
         icon: octicons/moon-16
         name: Switch to system preference
   features:
-    - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tabs
