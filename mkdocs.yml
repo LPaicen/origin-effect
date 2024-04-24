@@ -13,15 +13,15 @@ theme:
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/lightbulb-on-outline
+        icon: octicons/sun-16
         name: Switch to dark mode
     - media: '(prefers-color-scheme: dark)'
       scheme: slate
       primary: black
       accent: indigo
       toggle:
-        icon: material/lightbulb-outline
-        name: Switch to light mode
+        icon: octicons/moon-16
+        name: Switch to system preference
   features:
     - navigation.instant
     - navigation.instant.prefetch
@@ -31,6 +31,10 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.indexes
+
+# Hooks
+hooks:
+  - overrides/hooks/i18n-stayonpage.py
 
 # Additional
 extra:
